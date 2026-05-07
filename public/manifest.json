@@ -1,0 +1,16 @@
+{
+  "name": "Chakri Chini",
+  "short_name": "Chakri Chini",
+  "description": "Anonymous, fast platform for sharing structured experiences about companies in Bangladesh.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FF6400",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
