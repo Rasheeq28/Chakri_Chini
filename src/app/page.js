@@ -127,7 +127,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen relative pb-24">
       <HeroSection onShareClick={() => setIsModalOpen(true)} onExploreClick={handleExploreClick} companiesCount={companies.length} postsCount={posts.length} />
 
-      <main ref={exploreRef} className="flex-1 max-w-md w-full mx-auto px-4 py-8">
+      <main ref={exploreRef} className="flex-1 max-w-md w-full mx-auto px-4 pt-2 pb-8">
         
         {/* Search */}
         <div className="relative mb-6">

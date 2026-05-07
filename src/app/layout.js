@@ -18,6 +18,10 @@ export const metadata = {
   title: "Chakri Chini - Bangladeshi Job Market Insights",
   description: "Anonymous, fast platform for sharing structured experiences about companies in Bangladesh.",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",

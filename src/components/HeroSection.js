@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { Building2, TrendingUp, Users, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n';
 
@@ -8,17 +9,14 @@ export default function HeroSection({ onShareClick, onExploreClick, companiesCou
   const { t } = useTranslation();
 
   return (
-    <section className="relative pt-28 pb-16 overflow-hidden">
+    <section className="relative pt-24 pb-0 overflow-hidden">
       {/* Background Decor handled globally in globals.css now */}
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-12">
+      <div className="max-w-6xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-12 pt-2 pb-4">
         {/* Left: Copy & CTAs */}
         <div className="flex-1 text-center md:text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6">
-            <ShieldCheck className="w-4 h-4" />
-            <span>Community-Powered Transparency</span>
-          </div>
-          
+
+
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight tracking-tight mb-6">
             Know Companies <br className="hidden md:block" />
             <span className="text-primary">Before You Apply</span>
