@@ -42,26 +42,28 @@ export default function Header() {
             <div className="w-px h-5 bg-foreground/10" />
 
             {/* Navigation */}
-            <nav className="flex items-center gap-1">
+            <nav className="flex items-center gap-0.5 sm:gap-1">
               <Link
                 href="/"
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all tap-animation ${
+                className={`px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all tap-animation ${
                   pathname === '/'
                     ? 'bg-foreground/10 text-foreground'
                     : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
-                Home
+                <span className="hidden sm:inline">Home</span>
+                <span className="sm:hidden">🏠</span>
               </Link>
               <Link
                 href="/companies"
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all tap-animation ${
+                className={`px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all tap-animation ${
                   pathname.startsWith('/company') || pathname === '/companies'
                     ? 'bg-foreground/10 text-foreground'
                     : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
-                Companies
+                <span className="hidden sm:inline">Companies</span>
+                <span className="sm:hidden text-[10px]">🏢</span>
               </Link>
             </nav>
 
@@ -71,17 +73,18 @@ export default function Header() {
             {/* My Experience Button */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary/90 hover:shadow-md transition-all tap-animation whitespace-nowrap"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-primary text-white text-xs sm:text-sm font-bold hover:bg-primary/90 hover:shadow-md transition-all tap-animation whitespace-nowrap"
             >
               <Plus className="w-3.5 h-3.5" />
-              <span>My Experience</span>
+              <span className="hidden xs:inline">My Experience</span>
+              <span className="xs:hidden">Add</span>
             </button>
 
             {/* Divider */}
-            <div className="w-px h-5 bg-foreground/10" />
+            <div className="hidden sm:block w-px h-5 bg-foreground/10" />
 
-            {/* Search Bar */}
-            <form onSubmit={handleSearch} className="flex items-center relative">
+            {/* Search Bar - Hidden on small mobile */}
+            <form onSubmit={handleSearch} className="hidden sm:flex items-center relative">
               <Search className="absolute left-3 w-3.5 h-3.5 text-white pointer-events-none" />
               <input
                 type="text"
@@ -98,10 +101,11 @@ export default function Header() {
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors border border-primary/20 text-sm font-medium tap-animation text-primary whitespace-nowrap"
+              className="flex items-center gap-1.5 px-2 sm:px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors border border-primary/20 text-xs sm:text-sm font-medium tap-animation text-primary whitespace-nowrap"
             >
               <Globe className="w-3.5 h-3.5" />
-              <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
+              <span className="hidden sm:inline">{lang === 'en' ? 'বাংলা' : 'English'}</span>
+              <span className="sm:hidden uppercase">{lang === 'en' ? 'BN' : 'EN'}</span>
             </button>
 
           </div>
