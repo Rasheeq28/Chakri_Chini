@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Chakri Chini - Bangladeshi Job Market Insights",
-  description: "Anonymous, fast platform for sharing structured experiences about companies in Bangladesh.",
+  title: "Chakri Chini | Know Companies Before You Apply",
+  description: "Real, anonymous workplace insights from the Bangladeshi community. Explore salaries, interview experiences, and office culture before your next career move.",
   manifest: "/manifest.json",
   icons: {
     icon: "/logo.png",

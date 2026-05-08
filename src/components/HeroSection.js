@@ -152,16 +152,16 @@ export default function HeroSection({
 
         {/* ── Left: Hero copy & CTA ── */}
         <div className="flex-1 text-center lg:text-left pt-2 lg:max-w-lg">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight tracking-tight mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight tracking-tight mb-6">
             Know Companies <br className="hidden lg:block" />
             <span className="text-primary">Before You Apply</span>
           </h1>
 
-          <p className="text-lg text-foreground/70 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          <p className="text-base sm:text-lg text-foreground/70 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
             Explore real interview experiences, workplace culture, salaries, and honest company insights shared by students and professionals across Bangladesh.
           </p>
 
-          <p className="text-foreground/90 font-medium mb-8 max-w-2xl mx-auto lg:mx-0">
+          <p className="text-sm sm:text-base text-foreground/90 font-medium mb-8 max-w-2xl mx-auto lg:mx-0">
             Stop applying blindly. Make smarter career decisions through transparent, community-driven experiences.
           </p>
 
@@ -216,35 +216,35 @@ export default function HeroSection({
             ))}
           </div>
 
-          {/* Live stats — 3 tiles side by side */}
-          <div className="grid grid-cols-3 gap-3">
-            <div className="bg-card rounded-2xl border border-foreground/10 shadow-sm p-4 flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                <Building2 className="text-primary" style={{ width: 18, height: 18 }} />
+          {/* Live stats — Responsive grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="bg-card rounded-2xl border border-foreground/10 shadow-sm p-3 sm:p-4 flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                <Building2 className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <p className="text-xl font-black text-foreground leading-none">{companiesCount}</p>
-                <p className="text-[10px] font-medium text-foreground/50 mt-0.5 uppercase tracking-wide">Companies</p>
+                <p className="text-lg sm:text-xl font-black text-foreground leading-none">{companiesCount}</p>
+                <p className="text-[9px] sm:text-[10px] font-medium text-foreground/50 mt-0.5 uppercase tracking-wide">Companies</p>
               </div>
             </div>
 
-            <div className="bg-card rounded-2xl border border-foreground/10 shadow-sm p-4 flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                <Users className="text-primary" style={{ width: 18, height: 18 }} />
+            <div className="bg-card rounded-2xl border border-foreground/10 shadow-sm p-3 sm:p-4 flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                <Users className="text-primary w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <p className="text-xl font-black text-primary leading-none">{postsCount}</p>
-                <p className="text-[10px] font-medium text-foreground/50 mt-0.5 uppercase tracking-wide">Experiences</p>
+                <p className="text-lg sm:text-xl font-black text-primary leading-none">{postsCount}</p>
+                <p className="text-[9px] sm:text-[10px] font-medium text-foreground/50 mt-0.5 uppercase tracking-wide">Experiences</p>
               </div>
             </div>
 
-            <div className="bg-card rounded-2xl border border-foreground/10 shadow-sm p-4 flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-green-50 flex items-center justify-center shrink-0">
-                <TrendingUp className="text-green-600" style={{ width: 18, height: 18 }} />
+            <div className="bg-card rounded-2xl border border-foreground/10 shadow-sm p-3 sm:p-4 flex items-center gap-2 sm:gap-3 col-span-2 sm:col-span-1">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-green-50 flex items-center justify-center shrink-0">
+                <TrendingUp className="text-green-600 w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <p className="text-sm font-bold text-foreground leading-none">Anonymous</p>
-                <p className="text-[10px] font-medium text-foreground/50 mt-0.5">No sign-up</p>
+                <p className="text-sm sm:text-base font-bold text-foreground leading-none">Anonymous</p>
+                <p className="text-[9px] sm:text-[10px] font-medium text-foreground/50 mt-0.5">Community Driven</p>
               </div>
             </div>
           </div>
