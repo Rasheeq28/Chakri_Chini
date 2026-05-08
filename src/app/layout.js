@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Chakri Chini | Know Companies Before You Apply",
-  description: "Real, anonymous workplace insights from the Bangladeshi community. Explore salaries, interview experiences, and office culture before your next career move.",
+  title: "Know Companies Before You Apply",
+  description: "Explore real interview stories, company culture, salaries, and hiring experiences shared anonymously by professionals and students across Bangladesh.",
   manifest: "/manifest.json",
   icons: {
     icon: "/logo.png",

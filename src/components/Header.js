@@ -24,22 +24,22 @@ export default function Header() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 pb-2">
-        <header className="max-w-fit mx-auto bg-card/80 backdrop-blur-xl border border-foreground/10 rounded-full shadow-lg">
-          <div className="px-5 h-14 flex items-center gap-3">
+      <div className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 pt-4 pb-2">
+        <header className="w-full sm:max-w-fit mx-auto bg-card/80 backdrop-blur-xl border border-foreground/10 rounded-full shadow-lg overflow-hidden">
+          <div className="px-3 sm:px-5 h-14 flex items-center gap-1.5 sm:gap-3 justify-between sm:justify-start">
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 shrink-0 group">
+            <Link href="/" className="flex items-center gap-2 shrink-0 group px-1">
               <div className="w-7 h-7 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
                 <Image src="/logo.png" alt="Chakri Chini Logo" width={28} height={28} className="object-contain" />
               </div>
-              <h1 className="text-base font-bold text-foreground tracking-tight whitespace-nowrap leading-none self-center translate-y-px">
+              <h1 className="hidden xs:block text-base font-bold text-foreground tracking-tight whitespace-nowrap leading-none self-center translate-y-px">
                 {t('app_title')}
               </h1>
             </Link>
 
             {/* Divider */}
-            <div className="w-px h-5 bg-foreground/10" />
+            <div className="w-px h-5 bg-foreground/10 shrink-0" />
 
             {/* Navigation */}
             <nav className="flex items-center gap-0.5 sm:gap-1">
@@ -68,12 +68,12 @@ export default function Header() {
             </nav>
 
             {/* Divider */}
-            <div className="w-px h-5 bg-foreground/10" />
+            <div className="w-px h-5 bg-foreground/10 shrink-0" />
 
             {/* My Experience Button */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-primary text-white text-xs sm:text-sm font-bold hover:bg-primary/90 hover:shadow-md transition-all tap-animation whitespace-nowrap"
+              className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-primary text-white text-xs sm:text-sm font-bold hover:bg-primary/90 hover:shadow-md transition-all tap-animation whitespace-nowrap"
             >
               <Plus className="w-3.5 h-3.5" />
               <span className="hidden xs:inline">My Experience</span>
@@ -81,7 +81,7 @@ export default function Header() {
             </button>
 
             {/* Divider */}
-            <div className="hidden sm:block w-px h-5 bg-foreground/10" />
+            <div className="hidden sm:block w-px h-5 bg-foreground/10 shrink-0" />
 
             {/* Search Bar - Hidden on small mobile */}
             <form onSubmit={handleSearch} className="hidden sm:flex items-center relative">
@@ -96,12 +96,12 @@ export default function Header() {
             </form>
 
             {/* Divider */}
-            <div className="w-px h-5 bg-foreground/10" />
+            <div className="w-px h-5 bg-foreground/10 shrink-0" />
 
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1.5 px-2 sm:px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors border border-primary/20 text-xs sm:text-sm font-medium tap-animation text-primary whitespace-nowrap"
+              className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors border border-primary/20 text-xs sm:text-sm font-medium tap-animation text-primary whitespace-nowrap"
             >
               <Globe className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">{lang === 'en' ? 'বাংলা' : 'English'}</span>
