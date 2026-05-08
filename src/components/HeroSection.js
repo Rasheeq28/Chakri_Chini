@@ -2,9 +2,10 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Building2, TrendingUp, Users, ArrowRight, Star, AlertTriangle } from 'lucide-react';
+import { Building2, TrendingUp, Users, ArrowRight, Star, AlertTriangle, Plus } from 'lucide-react';
 import { useTranslation } from '@/lib/i18n';
 import { supabase } from '@/lib/supabase';
+import SubmitModal from '@/components/SubmitModal';
 
 // ─── Inline FeedCard (matches exact FeedCard style) ─────────────────────────
 function timeAgo(dateString) {
@@ -145,6 +146,7 @@ export default function HeroSection({
   featuredPosts = [],
 }) {
   const { t } = useTranslation();
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   return (
     <section className="relative pt-24 pb-0 overflow-hidden">
@@ -165,7 +167,7 @@ export default function HeroSection({
             Stop applying blindly. Make smarter career decisions through transparent, community-driven experiences.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
             <button
               onClick={onExploreClick}
               className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 tap-animation"
@@ -173,8 +175,21 @@ export default function HeroSection({
               <span>Explore Experiences</span>
               <ArrowRight className="w-5 h-5" />
             </button>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-card border border-foreground/10 text-foreground font-bold hover:bg-foreground/5 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 tap-animation"
+            >
+              <Plus className="w-5 h-5 text-primary" />
+              <span>Share Experience</span>
+            </button>
           </div>
         </div>
+
+        <SubmitModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+          onSuccess={() => window.location.reload()} 
+        />
 
         {/* ── Right: Feed cards + Live stats ── */}
         <div className="w-full lg:flex-1 flex flex-col gap-4">

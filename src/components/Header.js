@@ -26,14 +26,14 @@ export default function Header() {
     <>
       <div className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 pt-4 pb-2">
         <header className="w-full sm:max-w-fit mx-auto bg-card/80 backdrop-blur-xl border border-foreground/10 rounded-full shadow-lg overflow-hidden">
-          <div className="px-3 sm:px-5 h-14 flex items-center gap-1.5 sm:gap-3 justify-between sm:justify-start">
+          <div className="px-3 sm:px-5 h-14 flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar justify-start">
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 shrink-0 group px-1">
               <div className="w-7 h-7 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
                 <Image src="/logo.png" alt="Chakri Chini Logo" width={28} height={28} className="object-contain" />
               </div>
-              <h1 className="hidden xs:block text-base font-bold text-foreground tracking-tight whitespace-nowrap leading-none self-center translate-y-px">
+              <h1 className="hidden sm:block text-base font-bold text-foreground tracking-tight whitespace-nowrap leading-none self-center translate-y-px">
                 {t('app_title')}
               </h1>
             </Link>
@@ -42,28 +42,26 @@ export default function Header() {
             <div className="w-px h-5 bg-foreground/10 shrink-0" />
 
             {/* Navigation */}
-            <nav className="flex items-center gap-0.5 sm:gap-1">
+            <nav className="flex items-center gap-1">
               <Link
                 href="/"
-                className={`px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all tap-animation ${
+                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all tap-animation whitespace-nowrap ${
                   pathname === '/'
                     ? 'bg-foreground/10 text-foreground'
                     : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
-                <span className="hidden sm:inline">Home</span>
-                <span className="sm:hidden">🏠</span>
+                Home
               </Link>
               <Link
                 href="/companies"
-                className={`px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all tap-animation ${
+                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all tap-animation whitespace-nowrap ${
                   pathname.startsWith('/company') || pathname === '/companies'
                     ? 'bg-foreground/10 text-foreground'
                     : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
-                <span className="hidden sm:inline">Companies</span>
-                <span className="sm:hidden text-[10px]">🏢</span>
+                Companies
               </Link>
             </nav>
 
@@ -73,11 +71,10 @@ export default function Header() {
             {/* My Experience Button */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-primary text-white text-xs sm:text-sm font-bold hover:bg-primary/90 hover:shadow-md transition-all tap-animation whitespace-nowrap"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary text-white text-sm font-bold hover:bg-primary/90 hover:shadow-md transition-all tap-animation whitespace-nowrap"
             >
               <Plus className="w-3.5 h-3.5" />
-              <span className="hidden xs:inline">My Experience</span>
-              <span className="xs:hidden">Add</span>
+              <span>Share Experience</span>
             </button>
 
             {/* Divider */}
@@ -101,12 +98,15 @@ export default function Header() {
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors border border-primary/20 text-xs sm:text-sm font-medium tap-animation text-primary whitespace-nowrap"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors border border-primary/20 text-sm font-medium tap-animation text-primary whitespace-nowrap"
             >
               <Globe className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{lang === 'en' ? 'বাংলা' : 'English'}</span>
-              <span className="sm:hidden uppercase">{lang === 'en' ? 'BN' : 'EN'}</span>
+              <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
             </button>
+
+          </div>
+        </header>
+      </div>
 
           </div>
         </header>
