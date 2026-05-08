@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 pt-4 pb-2">
-        <header className={`w-full ${isMenuOpen ? 'max-w-full rounded-3xl' : 'sm:max-w-fit rounded-full'} mx-auto bg-card/90 backdrop-blur-xl border border-foreground/10 shadow-lg overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
+        <header className="w-full sm:max-w-fit mx-auto bg-card/95 backdrop-blur-xl border border-foreground/10 shadow-xl rounded-[28px] overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
           <div className="px-3 sm:px-5 h-14 flex items-center justify-between sm:justify-start gap-2 sm:gap-3">
 
             {/* Logo - Always visible */}
@@ -117,7 +117,7 @@ export default function Header() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="sm:hidden p-2 rounded-full hover:bg-foreground/5 text-foreground transition-all duration-300"
+              className="sm:hidden p-2 rounded-full hover:bg-foreground/5 text-foreground transition-all duration-300 z-[60]"
               aria-label="Toggle menu"
             >
               <div className={`transition-all duration-300 ${isMenuOpen ? 'rotate-90 scale-110' : 'rotate-0 scale-100'}`}>
@@ -125,65 +125,82 @@ export default function Header() {
               </div>
             </button>
           </div>
+        </header>
+      </div>
 
-          {/* Mobile Menu Content - Smooth Transition */}
-          <div 
-            className={`sm:hidden grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              isMenuOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-            }`}
-          >
-            <div className="overflow-hidden">
-              <div className="border-t border-foreground/5 bg-card/50 px-4 py-4 flex flex-col gap-3">
-                <nav className="flex flex-col gap-1">
-                  <Link
-                    href="/"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`px-4 py-3 rounded-2xl text-base font-bold transition-all ${
-                      pathname === '/'
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-foreground/70 hover:bg-foreground/5'
-                    }`}
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    href="/companies"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`px-4 py-3 rounded-2xl text-base font-bold transition-all ${
-                      pathname.startsWith('/company') || pathname === '/companies'
-                        ? 'bg-primary/10 text-primary'
-                        : 'text-foreground/70 hover:bg-foreground/5'
-                    }`}
-                  >
-                    Companies
-                  </Link>
-                </nav>
+      {/* Mobile Right-Side Drawer */}
+      <div 
+        className={`fixed inset-0 z-40 sm:hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isMenuOpen ? 'visible' : 'invisible pointer-events-none'
+        }`}
+      >
+        {/* Backdrop */}
+        <div 
+          className={`absolute inset-0 bg-background/40 backdrop-blur-sm transition-opacity duration-500 ${
+            isMenuOpen ? 'opacity-100' : 'opacity-0'
+          }`}
+          onClick={() => setIsMenuOpen(false)}
+        />
+        
+        {/* Drawer Panel */}
+        <div 
+          className={`absolute right-0 top-0 bottom-0 w-[280px] bg-card border-l border-foreground/10 shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="flex flex-col h-full pt-24 px-6 pb-8">
+            <p className="text-[10px] font-bold text-foreground/30 uppercase tracking-widest mb-6">Menu Navigation</p>
+            
+            <nav className="flex flex-col gap-2">
+              <Link
+                href="/"
+                onClick={() => setIsMenuOpen(false)}
+                className={`flex items-center gap-3 px-5 py-4 rounded-2xl text-lg font-bold transition-all ${
+                  pathname === '/'
+                    ? 'bg-primary text-white shadow-lg shadow-primary/20'
+                    : 'text-foreground/70 hover:bg-foreground/5'
+                }`}
+              >
+                <span>Home</span>
+              </Link>
+              <Link
+                href="/companies"
+                onClick={() => setIsMenuOpen(false)}
+                className={`flex items-center gap-3 px-5 py-4 rounded-2xl text-lg font-bold transition-all ${
+                  pathname.startsWith('/company') || pathname === '/companies'
+                    ? 'bg-primary text-white shadow-lg shadow-primary/20'
+                    : 'text-foreground/70 hover:bg-foreground/5'
+                }`}
+              >
+                <span>Companies</span>
+              </Link>
+            </nav>
 
-                <button
-                  onClick={() => {
-                    setIsModalOpen(true);
-                    setIsMenuOpen(false);
-                  }}
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-primary text-white font-bold shadow-lg shadow-primary/20"
-                >
-                  <Plus className="w-5 h-5" />
-                  <span>Share Experience</span>
-                </button>
+            <div className="mt-auto space-y-3">
+              <button
+                onClick={() => {
+                  setIsModalOpen(true);
+                  setIsMenuOpen(false);
+                }}
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-primary text-white font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform active:scale-95"
+              >
+                <Plus className="w-5 h-5" />
+                <span>Share Experience</span>
+              </button>
 
-                <button
-                  onClick={() => {
-                    toggleLanguage();
-                    setIsMenuOpen(false);
-                  }}
-                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-foreground/5 border border-foreground/10 text-foreground font-bold"
-                >
-                  <Globe className="w-5 h-5 text-primary" />
-                  <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  toggleLanguage();
+                  setIsMenuOpen(false);
+                }}
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-foreground/5 border border-foreground/10 text-foreground font-bold hover:bg-foreground/10 transition-colors"
+              >
+                <Globe className="w-5 h-5 text-primary" />
+                <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
+              </button>
             </div>
           </div>
-        </header>
+        </div>
       </div>
 
       <SubmitModal
@@ -194,4 +211,3 @@ export default function Header() {
     </>
   );
 }
-
