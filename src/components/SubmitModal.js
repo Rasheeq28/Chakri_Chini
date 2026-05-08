@@ -49,8 +49,7 @@ export default function SubmitModal({ isOpen, onClose, onSuccess, initialCompany
       t('like_options', 'growth'),
       t('like_options', 'learning'),
       t('like_options', 'culture'),
-      t('like_options', 'flexible_hours'),
-      t('like_options', 'nothing')
+      t('like_options', 'flexible_hours')
     ];
   }
 
@@ -60,10 +59,16 @@ export default function SubmitModal({ isOpen, onClose, onSuccess, initialCompany
       t('dislike_options', 'underpaid'),
       t('dislike_options', 'overwork'),
       t('dislike_options', 'toxic_environment'),
-      t('dislike_options', 'poor_management'),
-      t('dislike_options', 'nothing')
+      t('dislike_options', 'poor_management')
     ];
   }
+
+  // Valid if: likes OR dislikes has at least 1 tag,
+  // AND if one side is empty, the other must have at least 1.
+  const likesEmpty = formData.likes.length === 0;
+  const dislikesEmpty = formData.dislikes.length === 0;
+  // At least one side must be filled; both can't be empty
+  const tagsValid = !likesEmpty || !dislikesEmpty;
 
   const toggleChip = (type, value) => {
     setFormData(prev => {
@@ -249,7 +254,10 @@ export default function SubmitModal({ isOpen, onClose, onSuccess, initialCompany
             {/* Likes */}
             <div>
               <div className="flex justify-between items-end mb-2">
-                <label className="block text-sm font-medium text-foreground/70">{t('likes')} *</label>
+                <label className="block text-sm font-medium text-foreground/70">
+                  {t('likes')}
+                  {dislikesEmpty && <span className="text-red-500 ml-1">*</span>}
+                </label>
                 <span className="text-xs text-foreground/50">{formData.likes.length}/3</span>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -275,7 +283,10 @@ export default function SubmitModal({ isOpen, onClose, onSuccess, initialCompany
             {/* Dislikes */}
             <div>
               <div className="flex justify-between items-end mb-2">
-                <label className="block text-sm font-medium text-foreground/70">{t('dislikes')} *</label>
+                <label className="block text-sm font-medium text-foreground/70">
+                  {t('dislikes')}
+                  {likesEmpty && <span className="text-red-500 ml-1">*</span>}
+                </label>
                 <span className="text-xs text-foreground/50">{formData.dislikes.length}/3</span>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -324,7 +335,7 @@ export default function SubmitModal({ isOpen, onClose, onSuccess, initialCompany
           <button
             type="submit"
             form="experience-form"
-            disabled={isSubmitting || !formData.company_name || !formData.role || formData.likes.length === 0 || formData.dislikes.length === 0 || formData.experience_text.length > 120 || formData.rating === 0 || !formData.hiring_difficulty}
+            disabled={isSubmitting || !formData.company_name || !formData.role || !tagsValid || formData.experience_text.length > 120 || formData.rating === 0 || !formData.hiring_difficulty}
             className="w-full flex items-center justify-center gap-2 bg-secondary hover:opacity-90 text-foreground font-bold py-3.5 px-4 rounded-xl transition-all tap-animation disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (

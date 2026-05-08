@@ -25,16 +25,14 @@ const dictionaries = {
       growth: "Growth",
       learning: "Learning",
       culture: "Culture",
-      flexible_hours: "Flexible Hours",
-      nothing: "Nothing"
+      flexible_hours: "Flexible Hours"
     },
     dislike_options: {
       late_salary: "Late Salary",
       underpaid: "Underpaid",
       overwork: "Overwork",
       toxic_environment: "Toxic Environment",
-      poor_management: "Poor Management",
-      nothing: "Nothing"
+      poor_management: "Poor Management"
     },
     max_3_selections: "Max 3 selections",
     respectful_warning: "Please keep it respectful",
@@ -68,16 +66,14 @@ const dictionaries = {
       growth: "উন্নতি",
       learning: "শেখার সুযোগ",
       culture: "সংস্কৃতি",
-      flexible_hours: "নমনীয় সময়",
-      nothing: "কিছু না"
+      flexible_hours: "নমনীয় সময়"
     },
     dislike_options: {
       late_salary: "দেরিতে বেতন",
       underpaid: "কম বেতন",
       overwork: "অতিরিক্ত কাজ",
       toxic_environment: "বিষাক্ত পরিবেশ",
-      poor_management: "দুর্বল ব্যবস্থাপনা",
-      nothing: "কিছু না"
+      poor_management: "দুর্বল ব্যবস্থাপনা"
     },
     max_3_selections: "সর্বোচ্চ ৩টি নির্বাচন",
     respectful_warning: "দয়া করে সম্মানজনক ভাষা ব্যবহার করুন",

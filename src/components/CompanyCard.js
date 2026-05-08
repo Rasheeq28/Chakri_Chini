@@ -19,7 +19,7 @@ export default function CompanyCard({ company }) {
   return (
     <Link 
       href={`/company/${encodeURIComponent(company.name)}`}
-      className="block group bg-card hover:bg-foreground/5 rounded-2xl p-4 mb-3 border border-foreground/5 shadow-sm relative transition-all duration-300"
+      className="block group bg-card hover:bg-foreground/5 rounded-2xl p-4 border border-foreground/5 shadow-sm relative transition-all duration-300"
     >
       <div className="flex items-center gap-4">
         <div className="w-12 h-12 rounded-xl bg-foreground/5 flex items-center justify-center shrink-0 border border-foreground/10 group-hover:scale-105 transition-transform overflow-hidden">

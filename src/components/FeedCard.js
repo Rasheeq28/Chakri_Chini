@@ -113,22 +113,22 @@ export default function FeedCard({ post }) {
       {/* 4 & 5: Negative & Positive Tags */}
       {(post.dislikes?.length > 0 || post.likes?.length > 0) && (
         <div className="space-y-1.5 mb-3">
-          {/* Negative Tags - Prominent */}
+          {/* Dislike Tags — Red */}
           {post.dislikes?.length > 0 && (
             <div className="flex flex-wrap items-center gap-1.5">
               {post.dislikes.map(tag => (
-                <span key={tag} className="text-[11px] bg-danger/20 border border-danger/50 text-danger px-2 py-0.5 rounded font-bold">
-                  {tag}
+                <span key={tag} className="text-[11px] bg-red-50 border border-red-200 text-red-600 px-2 py-0.5 rounded font-bold">
+                  {tag === 'Nothing' ? 'Disliked Nothing' : tag}
                 </span>
               ))}
             </div>
           )}
-          {/* Positive Tags - Softer */}
+          {/* Like Tags — Green */}
           {post.likes?.length > 0 && (
             <div className="flex flex-wrap items-center gap-1.5">
               {post.likes.map(tag => (
-                <span key={tag} className="text-[11px] bg-foreground/5 border border-foreground/10 text-foreground/60 px-2 py-0.5 rounded font-medium">
-                  {tag}
+                <span key={tag} className="text-[11px] bg-green-50 border border-green-200 text-green-700 px-2 py-0.5 rounded font-bold">
+                  {tag === 'Nothing' ? 'Liked Nothing' : tag}
                 </span>
               ))}
             </div>
