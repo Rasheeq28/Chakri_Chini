@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslation } from '@/lib/i18n';
-import { Globe, Search, Plus, Menu, X } from 'lucide-react';
+import { Globe, Search, Plus, Menu, X, Home, Building2 } from 'lucide-react';
 import SubmitModal from '@/components/SubmitModal';
 
 export default function Header() {
@@ -136,42 +136,47 @@ export default function Header() {
       >
         {/* Backdrop */}
         <div 
-          className={`absolute inset-0 bg-background/40 backdrop-blur-sm transition-opacity duration-500 ${
+          className={`absolute inset-0 bg-black/5 backdrop-blur-sm transition-opacity duration-500 ${
             isMenuOpen ? 'opacity-100' : 'opacity-0'
           }`}
           onClick={() => setIsMenuOpen(false)}
         />
         
-        {/* Drawer Panel */}
+        {/* Drawer Panel - Sleek & Modern floating design */}
         <div 
-          className={`absolute right-0 top-0 bottom-0 w-[280px] bg-card border-l border-foreground/10 shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`absolute right-3 top-20 bottom-3 w-[240px] bg-card/80 backdrop-blur-2xl border border-foreground/10 shadow-2xl rounded-[32px] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden flex flex-col ${
+            isMenuOpen ? 'translate-x-0 scale-100' : 'translate-x-[110%] scale-95'
           }`}
         >
-          <div className="flex flex-col h-full pt-24 px-6 pb-8">
-            <p className="text-[10px] font-bold text-foreground/30 uppercase tracking-widest mb-6">Menu Navigation</p>
+          <div className="flex flex-col h-full p-5">
+            <div className="flex items-center gap-2 px-2 mb-8 mt-2">
+              <div className="w-1.5 h-6 bg-primary rounded-full" />
+              <p className="text-[10px] font-black text-foreground/40 uppercase tracking-[0.2em]">Menu</p>
+            </div>
             
             <nav className="flex flex-col gap-2">
               <Link
                 href="/"
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center gap-3 px-5 py-4 rounded-2xl text-lg font-bold transition-all ${
+                className={`flex items-center gap-4 px-4 py-3.5 rounded-2xl text-base font-bold transition-all ${
                   pathname === '/'
-                    ? 'bg-primary text-white shadow-lg shadow-primary/20'
-                    : 'text-foreground/70 hover:bg-foreground/5'
+                    ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                    : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
+                <Home className={`w-5 h-5 ${pathname === '/' ? 'text-white' : 'text-primary'}`} />
                 <span>Home</span>
               </Link>
               <Link
                 href="/companies"
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center gap-3 px-5 py-4 rounded-2xl text-lg font-bold transition-all ${
+                className={`flex items-center gap-4 px-4 py-3.5 rounded-2xl text-base font-bold transition-all ${
                   pathname.startsWith('/company') || pathname === '/companies'
-                    ? 'bg-primary text-white shadow-lg shadow-primary/20'
-                    : 'text-foreground/70 hover:bg-foreground/5'
+                    ? 'bg-primary text-white shadow-lg shadow-primary/25'
+                    : 'text-foreground/60 hover:text-foreground hover:bg-foreground/5'
                 }`}
               >
+                <Building2 className={`w-5 h-5 ${pathname === '/companies' ? 'text-white' : 'text-primary'}`} />
                 <span>Companies</span>
               </Link>
             </nav>
@@ -182,10 +187,10 @@ export default function Header() {
                   setIsModalOpen(true);
                   setIsMenuOpen(false);
                 }}
-                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-primary text-white font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform active:scale-95"
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-primary text-white font-black text-sm shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform active:scale-95"
               >
                 <Plus className="w-5 h-5" />
-                <span>Share Experience</span>
+                <span>SHARE EXPERIENCE</span>
               </button>
 
               <button
@@ -193,10 +198,10 @@ export default function Header() {
                   toggleLanguage();
                   setIsMenuOpen(false);
                 }}
-                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-foreground/5 border border-foreground/10 text-foreground font-bold hover:bg-foreground/10 transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-foreground/5 border border-foreground/10 text-foreground font-black text-xs tracking-wider transition-colors"
               >
-                <Globe className="w-5 h-5 text-primary" />
-                <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
+                <Globe className="w-4 h-4 text-primary" />
+                <span>{lang === 'en' ? 'বাংলা' : 'ENGLISH'}</span>
               </button>
             </div>
           </div>
