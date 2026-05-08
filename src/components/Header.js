@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 pt-4 pb-2">
-        <header className={`w-full ${isMenuOpen ? 'max-w-full rounded-3xl' : 'sm:max-w-fit rounded-full'} mx-auto bg-card/90 backdrop-blur-xl border border-foreground/10 shadow-lg overflow-hidden transition-all duration-300`}>
+        <header className={`w-full ${isMenuOpen ? 'max-w-full rounded-3xl' : 'sm:max-w-fit rounded-full'} mx-auto bg-card/90 backdrop-blur-xl border border-foreground/10 shadow-lg overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
           <div className="px-3 sm:px-5 h-14 flex items-center justify-between sm:justify-start gap-2 sm:gap-3">
 
             {/* Logo - Always visible */}
@@ -117,64 +117,72 @@ export default function Header() {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="sm:hidden p-2 rounded-full hover:bg-foreground/5 text-foreground transition-colors"
+              className="sm:hidden p-2 rounded-full hover:bg-foreground/5 text-foreground transition-all duration-300"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <div className={`transition-all duration-300 ${isMenuOpen ? 'rotate-90 scale-110' : 'rotate-0 scale-100'}`}>
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </div>
             </button>
           </div>
 
-          {/* Mobile Menu Content */}
-          {isMenuOpen && (
-            <div className="sm:hidden border-t border-foreground/5 bg-card/50 px-4 py-4 flex flex-col gap-3 animate-in slide-in-from-top-2 duration-200">
-              <nav className="flex flex-col gap-1">
-                <Link
-                  href="/"
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`px-4 py-3 rounded-2xl text-base font-bold transition-all ${
-                    pathname === '/'
-                      ? 'bg-primary/10 text-primary'
-                      : 'text-foreground/70 hover:bg-foreground/5'
-                  }`}
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/companies"
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`px-4 py-3 rounded-2xl text-base font-bold transition-all ${
-                    pathname.startsWith('/company') || pathname === '/companies'
-                      ? 'bg-primary/10 text-primary'
-                      : 'text-foreground/70 hover:bg-foreground/5'
-                  }`}
-                >
-                  Companies
-                </Link>
-              </nav>
+          {/* Mobile Menu Content - Smooth Transition */}
+          <div 
+            className={`sm:hidden grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              isMenuOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+            }`}
+          >
+            <div className="overflow-hidden">
+              <div className="border-t border-foreground/5 bg-card/50 px-4 py-4 flex flex-col gap-3">
+                <nav className="flex flex-col gap-1">
+                  <Link
+                    href="/"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`px-4 py-3 rounded-2xl text-base font-bold transition-all ${
+                      pathname === '/'
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-foreground/70 hover:bg-foreground/5'
+                    }`}
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    href="/companies"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`px-4 py-3 rounded-2xl text-base font-bold transition-all ${
+                      pathname.startsWith('/company') || pathname === '/companies'
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-foreground/70 hover:bg-foreground/5'
+                    }`}
+                  >
+                    Companies
+                  </Link>
+                </nav>
 
-              <button
-                onClick={() => {
-                  setIsModalOpen(true);
-                  setIsMenuOpen(false);
-                }}
-                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-primary text-white font-bold shadow-lg shadow-primary/20"
-              >
-                <Plus className="w-5 h-5" />
-                <span>Share Experience</span>
-              </button>
+                <button
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-primary text-white font-bold shadow-lg shadow-primary/20"
+                >
+                  <Plus className="w-5 h-5" />
+                  <span>Share Experience</span>
+                </button>
 
-              <button
-                onClick={() => {
-                  toggleLanguage();
-                  setIsMenuOpen(false);
-                }}
-                className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-foreground/5 border border-foreground/10 text-foreground font-bold"
-              >
-                <Globe className="w-5 h-5 text-primary" />
-                <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
-              </button>
+                <button
+                  onClick={() => {
+                    toggleLanguage();
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl bg-foreground/5 border border-foreground/10 text-foreground font-bold"
+                >
+                  <Globe className="w-5 h-5 text-primary" />
+                  <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
+                </button>
+              </div>
             </div>
-          )}
+          </div>
         </header>
       </div>
 
