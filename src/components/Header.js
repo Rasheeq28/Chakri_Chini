@@ -103,16 +103,10 @@ export default function Header() {
               <Globe className="w-3.5 h-3.5" />
               <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
             </button>
-
           </div>
         </header>
       </div>
 
-          </div>
-        </header>
-      </div>
-
-      {/* Global Submit Modal */}
       <SubmitModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
