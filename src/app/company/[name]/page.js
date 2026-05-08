@@ -164,7 +164,9 @@ export default function CompanyPage() {
             <ArrowLeft className="w-5 h-5" />
             Back
           </button>
-          <div className="text-foreground/50 text-sm font-medium">EN | বাংলা</div>
+          <div className="flex items-center gap-4">
+            {/* Action buttons could go here */}
+          </div>
         </div>
       </header>
 
@@ -317,7 +319,7 @@ export default function CompanyPage() {
             setSelectedRoleForModal("");
             setIsModalOpen(true);
           }}
-          className="pointer-events-auto flex items-center justify-center gap-2 bg-[#D9534F] text-white font-bold py-3.5 px-6 rounded-full shadow-lg shadow-[#D9534F]/30 hover:shadow-xl hover:shadow-[#D9534F]/40 transition-all tap-animation"
+          className="pointer-events-auto flex items-center justify-center gap-2 bg-primary text-white font-bold py-3.5 px-6 rounded-full shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all tap-animation"
         >
           <Plus className="w-5 h-5" />
           <span>My Experience</span>

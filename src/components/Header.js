@@ -89,15 +89,18 @@ export default function Header() {
                 />
               </form>
 
-              <div className="w-px h-5 bg-foreground/10 shrink-0" />
-
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors border border-primary/20 text-sm font-medium tap-animation text-primary whitespace-nowrap"
-              >
-                <Globe className="w-3.5 h-3.5" />
-                <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
-              </button>
+              {!pathname.startsWith('/company/') && (
+                <>
+                  <div className="w-px h-5 bg-foreground/10 shrink-0" />
+                  <button
+                    onClick={toggleLanguage}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors border border-primary/20 text-sm font-medium tap-animation text-primary whitespace-nowrap"
+                  >
+                    <Globe className="w-3.5 h-3.5" />
+                    <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Mobile Centered Search - Only visible on small screens */}
@@ -193,16 +196,18 @@ export default function Header() {
                 <span>SHARE EXPERIENCE</span>
               </button>
 
-              <button
-                onClick={() => {
-                  toggleLanguage();
-                  setIsMenuOpen(false);
-                }}
-                className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-foreground/5 border border-foreground/10 text-foreground font-black text-xs tracking-wider transition-colors"
-              >
-                <Globe className="w-4 h-4 text-primary" />
-                <span>{lang === 'en' ? 'বাংলা' : 'ENGLISH'}</span>
-              </button>
+              {!pathname.startsWith('/company/') && (
+                <button
+                  onClick={() => {
+                    toggleLanguage();
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-foreground/5 border border-foreground/10 text-foreground font-black text-xs tracking-wider transition-colors"
+                >
+                  <Globe className="w-4 h-4 text-primary" />
+                  <span>{lang === 'en' ? 'বাংলা' : 'ENGLISH'}</span>
+                </button>
+              )}
             </div>
           </div>
         </div>

@@ -95,23 +95,16 @@ export default function Home() {
     });
 
     const result = Array.from(map.values()).map(comp => {
-      let topPro = null;
-      const sortedPros = Object.entries(comp.proCounts).sort((a, b) => b[1] - a[1]);
-      if (sortedPros.length > 0) topPro = sortedPros[0][0];
-
-      let topCon = null;
-      const sortedCons = Object.entries(comp.conCounts).sort((a, b) => b[1] - a[1]);
-      if (sortedCons.length > 0) topCon = sortedCons[0][0];
-
       return {
         name: comp.name,
         reviewCount: comp.reviewCount,
-        averageRating: comp.ratingCount > 0 ? comp.totalRating / comp.ratingCount : 0,
+        avgRating: comp.ratingCount > 0 ? (comp.totalRating / comp.ratingCount).toFixed(1) : 0,
         averageSalary: comp.salaryCount > 0 ? comp.totalSalary / comp.salaryCount : null,
-        topPro,
-        topCon,
+        topPros: Object.entries(comp.proCounts).sort((a, b) => b[1] - a[1]).map(e => e[0]),
+        topCons: Object.entries(comp.conCounts).sort((a, b) => b[1] - a[1]).map(e => e[0]),
         lastActivity: comp.lastActivity,
         recentPost: comp.recentPost,
+        roles: Array.from(new Set(posts.filter(p => p.company_name === comp.name).map(p => p.role).filter(Boolean))),
       };
     });
 
